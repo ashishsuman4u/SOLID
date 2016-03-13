@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpenClosedPrinciple
+namespace SingleResponsibilityPrinciple
 {
-    public class Class1
+    public enum InvoiceType
     {
-    }
+        Final, Proposed
+    };
+
 }
