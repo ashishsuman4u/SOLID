@@ -28,8 +28,8 @@ namespace LiskovSubstitutionPrinciple
         }
         public string GetErrorFile(int id)
         {
-            var fileName = string.Format(@"c:\Error\{0}", id);
-            DirectoryInfo directoryInfo = new DirectoryInfo(fileName);
+            var fileName = string.Format(@"c:\Error\{0}.txt", id);
+            var directoryInfo = new DirectoryInfo(fileName);
             if (directoryInfo.Exists)
             {
                 return fileName;

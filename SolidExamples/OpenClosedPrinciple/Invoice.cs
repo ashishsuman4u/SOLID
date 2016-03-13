@@ -11,18 +11,19 @@ namespace OpenClosedPrinciple
     {
         public int InvoiceId { get; set; }
         public long Amount { get; set; }
-        public DateTime InvoiceDate { get; set; }
-        private readonly ILogger _fileLogger;
-        private readonly MailerService _mailerService;
         public InvoiceType InvoiceType { get; set; }
+        public DateTime InvoiceDate { get; set; }
+
+        private readonly ILogger _fileLogger;
+        private readonly IMailerService _mailerService;
 
         protected virtual ILogger Logger { get { return _fileLogger; } }
-        protected virtual MailerService MailerService { get { return _mailerService; } }
+        protected virtual IMailerService MailerService { get { return _mailerService; } }
 
         public Invoice()
         {
             _fileLogger = new FileLogger();
-            _mailerService = new MailerService();
+            _mailerService = new GmailMailerService();
         }
 
         public virtual void Add()

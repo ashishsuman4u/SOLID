@@ -12,9 +12,10 @@ namespace SingleResponsibilityPrinciple
         public int InvoiceId { get; set; }
         public long Amount { get; set; }
         public DateTime InvoiceDate { get; set; }
+        public InvoiceType InvoiceType { get; set; }
+
         private readonly FileLogger _fileLogger;
         private readonly MailerService _mailerService;
-        public InvoiceType InvoiceType { get; set; }
 
         public Invoice()
         {

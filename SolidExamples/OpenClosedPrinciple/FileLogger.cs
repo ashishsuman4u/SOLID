@@ -27,7 +27,7 @@ namespace OpenClosedPrinciple
         }
         public string GetErrorFile(int id)
         {
-            return string.Format(@"c:\Error\{0}", id);
+            return string.Format(@"c:\Error\{0}.txt", id);
         }
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DependencyInversionPrinciple
 {
-    public class Class1
+    public interface IFileLocator
     {
+        string GetErrorFile(int id);
     }
 }

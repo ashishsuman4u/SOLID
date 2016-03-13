@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace LiskovSubstitutionPrinciple
 {
-    public class MailerService
+    public class GmailMailerService : IMailerService
     {
         public string From { get; set; }
         public string To { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
 
-        public virtual void SendEmail()
+        public void SendEmail()
         {
             // Code for sending mail
         }

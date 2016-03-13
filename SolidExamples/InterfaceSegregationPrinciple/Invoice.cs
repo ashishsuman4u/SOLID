@@ -12,19 +12,21 @@ namespace InterfaceSegregationPrinciple
         public int InvoiceId { get; set; }
         public long Amount { get; set; }
         public DateTime InvoiceDate { get; set; }
+        public InvoiceType InvoiceType { get; set; }
+
         private readonly ILogger _fileLogger;
         private readonly IFileLocator _fileLocator;
-        private readonly MailerService _mailerService;
-        public InvoiceType InvoiceType { get; set; }
+        private readonly IMailerService _mailerService;
 
         protected virtual ILogger Logger { get { return _fileLogger; } }
         protected virtual IFileLocator FileLocator { get { return _fileLocator; } }
-        protected virtual MailerService MailerService { get { return _mailerService; } }
+        protected virtual IMailerService MailerService { get { return _mailerService; } }
 
         public Invoice()
         {
             _fileLogger = new FileLogger();
-            _mailerService = new MailerService();
+            _fileLocator = new FileLocator();
+            _mailerService = new GmailMailerService();
         }
 
         public virtual void Add()

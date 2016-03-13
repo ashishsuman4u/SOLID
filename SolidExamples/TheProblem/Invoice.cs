@@ -66,7 +66,7 @@ namespace TheProblem
         }
         public string GetErrorFile(int id)
         {
-            var fileName = string.Format(@"c:\Error\{0}", id);
+            var fileName = string.Format(@"c:\Error\{0}.txt", id);
             DirectoryInfo directoryInfo = new DirectoryInfo(fileName);
             if (directoryInfo.Exists)
             {

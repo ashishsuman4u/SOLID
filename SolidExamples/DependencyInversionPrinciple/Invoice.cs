@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LiskovSubstitutionPrinciple
+namespace DependencyInversionPrinciple
 {
     public class Invoice
     {
@@ -15,33 +15,33 @@ namespace LiskovSubstitutionPrinciple
         public InvoiceType InvoiceType { get; set; }
 
         private readonly ILogger _fileLogger;
+        private readonly IFileLocator _fileLocator;
         private readonly IMailerService _mailerService;
+        
 
-        protected virtual ILogger Logger { get { return _fileLogger; } }
-        protected virtual IMailerService MailerService { get { return _mailerService; } }
-
-        public Invoice()
+        public Invoice(ILogger logger, IFileLocator fileLocator, IMailerService mailerService)
         {
-            _fileLogger = new FileLogger();
-            _mailerService = new GmailMailerService();
+            _fileLogger = logger;
+            _fileLocator = fileLocator;
+            _mailerService = mailerService;
         }
 
         public virtual void Add()
         {
             try
             {
-                Logger.Info("Add method Start");
+                _fileLogger.Info("Add method Start");
                 // Code for adding invoice
                 // Once Invoice has been added , send mail 
-                MailerService.From = "MailAddressFrom";
-                MailerService.To = "MailAddressTo";
-                MailerService.Subject = "MailSubject";
-                MailerService.Body = "MailBody";
-                MailerService.SendEmail();
+                _mailerService.From = "MailAddressFrom";
+                _mailerService.To = "MailAddressTo";
+                _mailerService.Subject = "MailSubject";
+                _mailerService.Body = "MailBody";
+                _mailerService.SendEmail();
             }
             catch (Exception ex)
             {
-                Logger.Error("Error while Adding Invoice", ex);
+                _fileLogger.Error("Error while Adding Invoice", ex);
             }
         }
 
@@ -49,12 +49,12 @@ namespace LiskovSubstitutionPrinciple
         {
             try
             {
-                Logger.Info("Add Delete Start");
+                _fileLogger.Info("Add Delete Start");
                 // Code for Delete invoice
             }
             catch (Exception ex)
             {
-                Logger.Error("Error while Deleting Invoice", ex);
+                _fileLogger.Error("Error while Deleting Invoice", ex);
             }
         }
 
@@ -63,9 +63,9 @@ namespace LiskovSubstitutionPrinciple
             //No discount
             return 0;
         }
-        public string GetErrorFile(int id)
+        public string GetErrorFileName(int id)
         {
-            return Logger.GetErrorFile(id);
+            return _fileLocator.GetErrorFile(id);
         }
     }
 }

@@ -1,34 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SingleResponsibilityPrinciple
+namespace DependencyInversionPrinciple
 {
-    public class FileLogger
+    public class FileLogger : ILogger
     {
 
         public FileLogger()
         {
-            // Code for initialization i.e. Creating Log file with specified  
-            // details
+            // Code for initialization i.e. Creating Log file with specified details
         }
-        public void Info(string info)
+        public virtual void Info(string info)
         {
             // Code for writing details into text file 
         }
-        public void Debug(string info)
+        public virtual void Debug(string info)
         {
             // Code for writing debug information into text file 
         }
-        public void Error(string message, Exception ex)
+        public virtual void Error(string message, Exception ex)
         {
             // Code for writing Error with message and exception detail
-        }
-        public string GetErrorFile(int id)
-        {
-            return string.Format(@"c:\Error\{0}.txt", id);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InterfaceSegregationPrinciple
 {
-    public class MailerService
+    public class GmailMailerService : IMailerService
     {
         public string From { get; set; }
         public string To { get; set; }
