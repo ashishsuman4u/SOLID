@@ -12,6 +12,7 @@ namespace TheProblem
 {
     public class Invoice
     {
+        public int InvoiceId { get; set; }
         public long Amount { get; set; }
         public DateTime InvoiceDate { get; set; }
 
@@ -27,7 +28,8 @@ namespace TheProblem
             }
             catch (Exception ex)
             {
-                System.IO.File.WriteAllText(@"c:\Error.txt", ex.ToString());
+                string file = GetErrorFileName(InvoiceId);
+                System.IO.File.WriteAllText(file, ex.ToString());
             }
         }
 
@@ -39,7 +41,8 @@ namespace TheProblem
             }
             catch (Exception ex)
             {
-                System.IO.File.WriteAllText(@"c:\Error.txt", ex.ToString());
+                string file = GetErrorFileName(InvoiceId);
+                System.IO.File.WriteAllText(file, ex.ToString());
             }
         }
 
@@ -51,7 +54,8 @@ namespace TheProblem
             }
             catch (Exception ex)
             {
-                System.IO.File.WriteAllText(@"c:\Error.txt", ex.ToString());
+                string file = GetErrorFileName(InvoiceId);
+                System.IO.File.WriteAllText(file, ex.ToString());
             }
         }
 
@@ -59,6 +63,16 @@ namespace TheProblem
         {
             //No discount
             return 0;
+        }
+        public string GetErrorFileName(int id)
+        {
+            var fileName = string.Format(@"c:\Error\{0}", id);
+            DirectoryInfo directoryInfo = new DirectoryInfo(fileName);
+            if (directoryInfo.Exists)
+            {
+                return fileName;
+            }
+            return string.Empty;
         }
     }
 }

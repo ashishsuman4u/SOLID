@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpenClosedPrinciple
+namespace LiskovSubstitutionPrinciple
 {
     public class Invoice
     {
@@ -64,13 +64,7 @@ namespace OpenClosedPrinciple
         }
         public string GetErrorFileName(int id)
         {
-            var fileName = Logger.GetErrorFilePath(id);
-            DirectoryInfo directoryInfo = new DirectoryInfo(fileName);
-            if (directoryInfo.Exists)
-            {
-                return fileName;
-            }
-            return string.Empty;
+            return Logger.GetErrorFilePath(id);
         }
     }
 }

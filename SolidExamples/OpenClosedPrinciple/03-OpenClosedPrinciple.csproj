@@ -39,10 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdvanceStoreLogger.cs" />
+    <Compile Include="DBLogger.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="StoreLogger.cs" />
+    <Compile Include="FileLogger.cs" />
     <Compile Include="FinalInvoice.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="MailerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

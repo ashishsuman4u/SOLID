@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,22 +9,23 @@ namespace SingleResponsibilityPrinciple
 {
     public class Invoice
     {
+        public int InvoiceId { get; set; }
         public long Amount { get; set; }
         public DateTime InvoiceDate { get; set; }
-        private readonly StoreLogger _storeLogger;
+        private readonly FileLogger _fileLogger;
         private readonly MailerService _mailerService;
         public InvoiceType InvoiceType { get; set; }
 
         public Invoice()
         {
-            _storeLogger = new StoreLogger();
+            _fileLogger = new FileLogger();
             _mailerService = new MailerService();
         }
         public void Add()
         {
             try
             {
-                _storeLogger.Info("Add method Start");
+                _fileLogger.Info("Add method Start");
                 // Code for adding invoice
                 // Once Invoice has been added , send mail 
                 _mailerService.From = "MailAddressFrom";
@@ -34,7 +36,7 @@ namespace SingleResponsibilityPrinciple
             }
             catch (Exception ex)
             {
-                _storeLogger.Error("Error while Adding Invoice", ex);
+                _fileLogger.Error("Error while Adding Invoice", ex);
             }
         }
 
@@ -42,12 +44,12 @@ namespace SingleResponsibilityPrinciple
         {
             try
             {
-                _storeLogger.Info("Add Delete Start");
+                _fileLogger.Info("Add Delete Start");
                 // Code for Delete invoice
             }
             catch (Exception ex)
             {
-                _storeLogger.Error("Error while Deleting Invoice", ex);
+                _fileLogger.Error("Error while Deleting Invoice", ex);
             }
         }
 
@@ -70,6 +72,16 @@ namespace SingleResponsibilityPrinciple
         {
             //No discount
             return 0;
+        }
+        public string GetErrorFileName(int id)
+        {
+            var fileName = _fileLogger.GetErrorFilePath(id);
+            DirectoryInfo directoryInfo = new DirectoryInfo(fileName);
+            if (directoryInfo.Exists)
+            {
+                return fileName;
+            }
+            return string.Empty;
         }
 
     }

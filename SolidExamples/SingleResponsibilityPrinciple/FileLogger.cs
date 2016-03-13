@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace SingleResponsibilityPrinciple
 {
-    public class StoreLogger
+    public class FileLogger
     {
 
-        public StoreLogger()
+        public FileLogger()
         {
             // Code for initialization i.e. Creating Log file with specified  
             // details
@@ -25,6 +25,10 @@ namespace SingleResponsibilityPrinciple
         public void Error(string message, Exception ex)
         {
             // Code for writing Error with message and exception detail
+        }
+        public string GetErrorFilePath(int id)
+        {
+            return string.Format(@"c:\Error\{0}", id);
         }
     }
 }

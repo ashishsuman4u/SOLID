@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace OpenClosedPrinciple
 {
-    public class StoreLogger
+    public class FileLogger : ILogger
     {
 
-        public StoreLogger()
+        public FileLogger()
         {
             // Code for initialization i.e. Creating Log file with specified details
         }
@@ -24,6 +24,10 @@ namespace OpenClosedPrinciple
         public virtual void Error(string message, Exception ex)
         {
             // Code for writing Error with message and exception detail
+        }
+        public string GetErrorFilePath(int id)
+        {
+            return string.Format(@"c:\Error\{0}", id);
         }
     }
 }
