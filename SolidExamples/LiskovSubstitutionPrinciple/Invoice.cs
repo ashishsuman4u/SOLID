@@ -62,9 +62,9 @@ namespace LiskovSubstitutionPrinciple
             //No discount
             return 0;
         }
-        public string GetErrorFileName(int id)
+        public string GetErrorFile(int id)
         {
-            return Logger.GetErrorFilePath(id);
+            return Logger.GetErrorFile(id);
         }
     }
 }

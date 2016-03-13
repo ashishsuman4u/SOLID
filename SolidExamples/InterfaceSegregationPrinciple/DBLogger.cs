@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LiskovSubstitutionPrinciple
+namespace InterfaceSegregationPrinciple
 {
     public class DBLogger : ILogger
     {
@@ -25,10 +25,6 @@ namespace LiskovSubstitutionPrinciple
         public void Error(string message, Exception ex)
         {
             // Code for writing Error with message and exception detail
-        }
-        public string GetErrorFile(int id)
-        {
-            throw new NotSupportedException();
         }
     }
 }

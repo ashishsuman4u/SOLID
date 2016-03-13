@@ -26,7 +26,7 @@ namespace OpenClosedPrinciple
         {
             // Code for writing Error with message and exception detail
         }
-        public string GetErrorFilePath(int id)
+        public string GetErrorFile(int id)
         {
             throw new NotSupportedException();
         }

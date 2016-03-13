@@ -39,8 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DBLogger.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="FileLocator.cs" />
+    <Compile Include="FileLogger.cs" />
+    <Compile Include="FinalInvoice.cs" />
+    <Compile Include="IFileLocator.cs" />
+    <Compile Include="ILogger.cs" />
+    <Compile Include="Invoice.cs" />
+    <Compile Include="MailerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProposedInvoice.cs" />
+    <Compile Include="RecurringInvoice.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

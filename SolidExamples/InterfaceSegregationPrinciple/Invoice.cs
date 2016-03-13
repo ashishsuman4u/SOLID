@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OpenClosedPrinciple
+namespace InterfaceSegregationPrinciple
 {
     public class Invoice
     {
@@ -13,10 +13,12 @@ namespace OpenClosedPrinciple
         public long Amount { get; set; }
         public DateTime InvoiceDate { get; set; }
         private readonly ILogger _fileLogger;
+        private readonly IFileLocator _fileLocator;
         private readonly MailerService _mailerService;
         public InvoiceType InvoiceType { get; set; }
 
         protected virtual ILogger Logger { get { return _fileLogger; } }
+        protected virtual IFileLocator FileLocator { get { return _fileLocator; } }
         protected virtual MailerService MailerService { get { return _mailerService; } }
 
         public Invoice()
@@ -62,15 +64,9 @@ namespace OpenClosedPrinciple
             //No discount
             return 0;
         }
-        public string GetErrorFile(int id)
+        public string GetErrorFileName(int id)
         {
-            var fileName = Logger.GetErrorFile(id);
-            DirectoryInfo directoryInfo = new DirectoryInfo(fileName);
-            if (directoryInfo.Exists)
-            {
-                return fileName;
-            }
-            return string.Empty;
+            return FileLocator.GetErrorFile(id);
         }
     }
 }

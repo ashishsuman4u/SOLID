@@ -28,7 +28,7 @@ namespace TheProblem
             }
             catch (Exception ex)
             {
-                string file = GetErrorFileName(InvoiceId);
+                string file = GetErrorFile(InvoiceId);
                 System.IO.File.WriteAllText(file, ex.ToString());
             }
         }
@@ -41,7 +41,7 @@ namespace TheProblem
             }
             catch (Exception ex)
             {
-                string file = GetErrorFileName(InvoiceId);
+                string file = GetErrorFile(InvoiceId);
                 System.IO.File.WriteAllText(file, ex.ToString());
             }
         }
@@ -54,7 +54,7 @@ namespace TheProblem
             }
             catch (Exception ex)
             {
-                string file = GetErrorFileName(InvoiceId);
+                string file = GetErrorFile(InvoiceId);
                 System.IO.File.WriteAllText(file, ex.ToString());
             }
         }
@@ -64,7 +64,7 @@ namespace TheProblem
             //No discount
             return 0;
         }
-        public string GetErrorFileName(int id)
+        public string GetErrorFile(int id)
         {
             var fileName = string.Format(@"c:\Error\{0}", id);
             DirectoryInfo directoryInfo = new DirectoryInfo(fileName);

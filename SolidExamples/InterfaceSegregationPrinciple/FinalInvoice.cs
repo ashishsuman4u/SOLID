@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace InterfaceSegregationPrinciple
 {
-    public class Class1
+    public class FinalInvoice : Invoice
     {
+        public override double GetDiscount(double amount)
+        {
+            return base.GetDiscount(amount) - 100;
+        }
     }
 }

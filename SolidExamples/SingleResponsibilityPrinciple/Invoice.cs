@@ -73,9 +73,9 @@ namespace SingleResponsibilityPrinciple
             //No discount
             return 0;
         }
-        public string GetErrorFileName(int id)
+        public string GetErrorFile(int id)
         {
-            var fileName = _fileLogger.GetErrorFilePath(id);
+            var fileName = _fileLogger.GetErrorFile(id);
             DirectoryInfo directoryInfo = new DirectoryInfo(fileName);
             if (directoryInfo.Exists)
             {

@@ -6,7 +6,7 @@ namespace LiskovSubstitutionPrinciple
     {
         void Debug(string info);
         void Error(string message, Exception ex);
-        string GetErrorFilePath(int id);
+        string GetErrorFile(int id);
         void Info(string info);
     }
 }

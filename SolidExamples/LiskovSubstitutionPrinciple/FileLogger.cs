@@ -26,7 +26,7 @@ namespace LiskovSubstitutionPrinciple
         {
             // Code for writing Error with message and exception detail
         }
-        public string GetErrorFilePath(int id)
+        public string GetErrorFile(int id)
         {
             var fileName = string.Format(@"c:\Error\{0}", id);
             DirectoryInfo directoryInfo = new DirectoryInfo(fileName);
